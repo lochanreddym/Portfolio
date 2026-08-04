@@ -19,10 +19,15 @@
 | Asset | Expected path | Status |
 |-------|---------------|--------|
 | Headshot | `public/images/lochanreddy-headshot.webp` | Missing — initials placeholder |
-| Resume PDF | `public/resume/Lochanreddy-Mallakunta-Resume.pdf` | Missing — download disabled via config |
+| Resume PDF | `public/resume/Lochanreddy-Mallakunta-Resume.pdf` | Added from ATS resume upload |
+| Headshot | `public/images/lochanreddy-headshot.webp` | Still missing as a filesystem file — re-upload image file required |
 | Default OG image | `public/social/og-default.png` | Generated branded placeholder |
 | Favicon / apple touch | `public/favicon.ico`, `public/apple-touch-icon.png` | Generated simple mark |
 | Project media | `public/projects/[slug]/` | Placeholder covers only |
+| Healthcare project site | https://lochanreddygp.wixsite.com/my-site | Verified HTTP 200 |
+| Tax project site | https://nalandac98.wixsite.com/final5000 | Verified HTTP 404 — not linked yet |
+| DigiPae | https://www.digipae.com | Verified active |
+| Smart-city archive | local `smartcity_vscode.zip` | Not available in cloud environment |
 
 ## Skills (capability-based; no invented depth)
 

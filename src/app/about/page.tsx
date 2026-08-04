@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import {
   aboutHighlights,
+  certifications,
   educationItems,
   experienceItems,
 } from "@/data/experience";
@@ -67,11 +68,14 @@ export default function AboutPage() {
         <section className="mt-12 space-y-4">
           <h2 className="text-2xl font-semibold">Founder background</h2>
           <p className="text-muted">
-            As Founder & CEO of CEIVIS, building DigiPae, the work includes product
-            questions, KPI design, payment and identity workflow evaluation, funnel
-            thinking, prioritization, and risk/compliance awareness. That experience
-            supports analyst positioning; it does not replace project evidence and does
-            not include unverified traction claims.
+            As Founder & Full-Stack Developer at DigiPae (Ceivis LLC), the work includes
+            Mixpanel product analytics, payment and KYC funnel tracking, KPI dashboards,
+            multi-vendor data reconciliation, and stakeholder-ready reporting. That
+            experience supports analyst positioning; it does not replace project evidence
+            and does not include unverified traction claims.
+          </p>
+          <p className="text-sm text-muted">
+            Based in {siteConfig.location}.
           </p>
           <div className="flex flex-wrap gap-3">
             <Button href={`/projects/${siteConfig.digipaeCaseStudySlug}`}>
@@ -102,17 +106,28 @@ export default function AboutPage() {
         <section className="mt-12 space-y-4">
           <h2 className="text-2xl font-semibold">Education</h2>
           {educationItems.map((item) => (
-            <article key={item.title} className="rounded-2xl border border-dashed border-border p-5">
-              <div className="flex flex-wrap gap-2">
-                <h3 className="font-semibold">{item.title}</h3>
-                <Badge tone="warning">Placeholder</Badge>
-              </div>
+            <article key={item.title} className="rounded-2xl border border-border p-5">
+              <h3 className="font-semibold">{item.title}</h3>
               <p className="mt-1 text-sm text-muted">
                 {item.organization} · {item.period}
               </p>
               <p className="mt-3 text-sm text-muted">{item.description}</p>
             </article>
           ))}
+        </section>
+
+        <section className="mt-12 space-y-4">
+          <h2 className="text-2xl font-semibold">Certifications</h2>
+          <ul className="grid gap-2 sm:grid-cols-2">
+            {certifications.map((item) => (
+              <li
+                key={item}
+                className="rounded-xl border border-border bg-surface px-4 py-3 text-sm text-muted"
+              >
+                {item}
+              </li>
+            ))}
+          </ul>
         </section>
 
         <section className="mt-12 rounded-2xl bg-accent-soft p-6">

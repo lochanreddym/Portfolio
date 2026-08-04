@@ -24,9 +24,12 @@ export const skillGroups: SkillGroup[] = [
     skills: [
       "Power BI",
       "DAX",
+      "Power Query",
+      "Tableau",
       "Dashboard design",
       "KPI development",
       "Reporting automation",
+      "Advanced Excel",
     ],
   },
   {

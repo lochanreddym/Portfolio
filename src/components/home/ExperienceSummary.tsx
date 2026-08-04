@@ -44,8 +44,8 @@ export function ExperienceSummary() {
         <SectionHeading
           id="experience-heading"
           eyebrow="Experience & education"
-          title="Ownership with evidence still to confirm"
-          description="Confirmed founder framing is shown. Additional employment and education details remain labeled placeholders until verified."
+          title="Experience grounded in the current resume"
+          description="Roles and education below follow the ATS resume on this site. Project case studies carry the detailed analytical evidence."
         />
         <div className="mt-10 grid gap-10 lg:grid-cols-2">
           <Timeline title="Experience" items={experienceItems} />

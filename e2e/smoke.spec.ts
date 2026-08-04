@@ -42,13 +42,13 @@ test.describe("portfolio smoke tests", () => {
     await expect(page.getByRole("heading", { name: "Page not found" })).toBeVisible();
   });
 
-  test("resume control behaves correctly when PDF is absent", async ({ page }) => {
+  test("resume download is available when PDF exists", async ({ page }) => {
     await page.goto("/resume");
-    await expect(page.getByText(/Resume PDF not uploaded yet/i)).toBeVisible();
-    await expect(page.getByRole("link", { name: /Download Resume/i })).toHaveCount(0);
-    await expect(
-      page.getByRole("link", { name: /Request resume by email/i }),
-    ).toBeVisible();
+    await expect(page.getByText(/Resume PDF is available/i)).toBeVisible();
+    await expect(page.getByRole("link", { name: /Download Resume/i })).toHaveAttribute(
+      "href",
+      "/resume/Lochanreddy-Mallakunta-Resume.pdf",
+    );
   });
 
   test("contact form has required fields", async ({ page }) => {

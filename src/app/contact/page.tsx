@@ -40,6 +40,19 @@ export default function ContactPage() {
                 {siteConfig.email}
               </a>
             </div>
+            <div>
+              <p className="text-sm font-medium text-foreground">Phone</p>
+              <a
+                href={`tel:${siteConfig.phone.replace(/\s+/g, "")}`}
+                className="mt-1 block text-accent hover:underline"
+              >
+                {siteConfig.phone}
+              </a>
+            </div>
+            <div>
+              <p className="text-sm font-medium text-foreground">Location</p>
+              <p className="mt-1 text-sm text-muted">{siteConfig.location}</p>
+            </div>
             <div className="flex flex-wrap gap-3">
               <Button href={`mailto:${siteConfig.email}`} variant="secondary">
                 Open email app

@@ -4,8 +4,8 @@ Complete these before sharing the portfolio widely with recruiters.
 
 ## Identity assets
 
-- [ ] `public/images/lochanreddy-headshot.webp` — professional headshot
-- [ ] `public/resume/Lochanreddy-Mallakunta-Resume.pdf` — ATS-friendly resume
+- [ ] `public/images/lochanreddy-headshot.webp` — professional headshot (chat image was not saved as a file; please re-upload `.webp`/`.jpg`)
+- [x] `public/resume/Lochanreddy-Mallakunta-Resume.pdf` — ATS-friendly resume
 
 ## Project evidence (per slug under `public/projects/<slug>/`)
 

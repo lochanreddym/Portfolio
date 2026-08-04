@@ -9,7 +9,7 @@ export function SkillsSection() {
           id="skills-heading"
           eyebrow="Skills"
           title="Grouped by how the work gets done"
-          description="Skills shown here are supported by the portfolio’s analytical framing and founder product work. Tableau is omitted until evidenced."
+          description="Skills shown here are supported by the resume and portfolio project evidence, including SQL, Python, Power BI, Tableau, and Excel."
         />
         <div className="mt-10 grid gap-5 lg:grid-cols-2">
           {skillGroups.map((group) => (

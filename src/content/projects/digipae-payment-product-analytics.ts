@@ -10,18 +10,18 @@ export const digipaePaymentProductAnalytics = {
   oneLineOutcome:
     "A measurement framework for identifying where users and merchants encounter friction across onboarding, verification, bank linking, and payment completion.",
   summary:
-    "Designed an analytics framing for DigiPae’s payments and verified-identity workflows so product and operations decisions can be tied to measurable funnel stages, failure reasons, and activation signals—without exposing confidential production records.",
+    "As Founder & Full-Stack Developer at DigiPae (Ceivis LLC), designed product analytics and KPI reporting for payments and verified-identity workflows—covering Mixpanel funnel instrumentation, onboarding and KYC conversion tracking, multi-vendor data reconciliation, and executive-ready summaries—without publishing confidential production records here.",
   businessContext:
-    "DigiPae is a payments and verified-identity platform built by CEIVIS. Early product decisions require clarity on where users and merchants drop off, why payments fail, and which operational exceptions deserve priority. This case study focuses on analytical decision support rather than startup marketing claims.",
+    "DigiPae is a payments and verified-identity platform built by Ceivis LLC. Product and operations decisions require clarity on where users drop off in onboarding and KYC, how payment funnels perform, and how Stripe, Socure, Plaid, and Firebase data can be reconciled into one reporting view. This case study focuses on analytical decision support rather than startup marketing claims.",
   businessQuestion:
     "Where do users and merchants encounter friction across signup, identity verification, bank linking, payment initiation, and successful completion—and which issues should be prioritized?",
-  role: "Founder-led product and data analysis",
+  role: "Founder & Full-Stack Developer · product and data analysis",
   responsibilities: [
-    "Define measurable product and operations questions",
-    "Outline funnel stages and KPI definitions for onboarding and payments",
-    "Separate activation, conversion, failure, and risk-review signals",
-    "Draft recommendation priorities for product and operations follow-up",
-    "Establish confidentiality boundaries for any publishable evidence",
+    "Instrument product analytics for payment funnels, onboarding drop-off, KYC conversion, and retention",
+    "Design KPI dashboards for transaction volumes, error rates, and compliance metrics",
+    "Reconcile multi-vendor data flows into a consistent reporting view with validation checks",
+    "Document data mappings and technical logic for cross-functional stakeholders",
+    "Keep publishable portfolio evidence free of confidential payment and identity records",
   ],
   projectType: "Startup",
   domain: "Fintech",
@@ -34,23 +34,23 @@ export const digipaePaymentProductAnalytics = {
     "Root-cause framing",
     "Stakeholder communication",
   ],
-  date: "Dates pending confirmation",
+  date: "Oct 2025 – Present",
   status: "Featured",
   featured: true,
   evidenceTypes: [
-    "Funnel framework",
-    "KPI dictionary",
-    "Failure taxonomy",
+    "Mixpanel funnel tracking",
+    "KPI dashboard",
+    "Multi-vendor data reconciliation",
     "Recommendation matrix",
   ],
   problem:
     "Product and operations teams need a shared way to locate friction in onboarding, verification, bank linking, and payment completion.",
   approach:
-    "Mapped lifecycle stages, defined decision-oriented KPIs, and outlined analysis views for failures, activation, and exceptions using demonstration-safe framing.",
-  datasetName: "Demonstration / synthetic product-event schema (pending confirmation)",
+    "Instrumented Mixpanel product analytics, designed real-time KPI views, and normalized multi-vendor event/data flows into consistent reporting—using demonstration-safe framing for public portfolio evidence.",
+  datasetName: "Product analytics and multi-vendor operational data (sanitized for portfolio)",
   datasetSource:
-    "[Pending confirmation] No production financial, identity, or merchant records are published in this portfolio.",
-  dataClassification: "Pending confirmation",
+    "Internal DigiPae product analytics (Mixpanel) and vendor integrations (Stripe, Socure, Plaid, Firebase). No production financial, identity, or merchant records are published in this portfolio.",
+  dataClassification: "Confidential",
   dataVolume: null,
   dataPeriod: null,
   dataQualityIssues: [
@@ -76,16 +76,30 @@ export const digipaePaymentProductAnalytics = {
     "Risk-review volume",
   ],
   verifiedResults: [
-    pendingResult("Primary friction stages identified"),
-    pendingResult("Payment failure taxonomy drafted"),
-    pendingResult("KPI dictionary defined"),
-    pendingResult("Priority recommendations framed"),
+    {
+      label: "Analytics instrumentation",
+      value: "Mixpanel funnels live",
+      detail:
+        "Payment funnels, onboarding drop-off, KYC conversion, and retention tracking per resume.",
+    },
+    {
+      label: "Reporting view",
+      value: "KPI dashboard designed",
+      detail:
+        "Transaction volumes, error rates, and compliance metrics surfaced for stakeholders.",
+    },
+    {
+      label: "Data integration",
+      value: "Multi-vendor reconciliation",
+      detail: "Stripe, Socure, Plaid, and Firebase flows normalized into one reporting view.",
+    },
+    pendingResult("Sanitized funnel visuals for public portfolio"),
   ],
   findings: [
-    "Onboarding, verification, bank linking, and payment completion should be measured as a connected lifecycle rather than isolated page metrics.",
-    "Payment success analysis is incomplete without failure-reason and exception categories.",
-    "User and merchant activation need separate definitions because success criteria differ.",
-    "Risk and compliance review volume should be monitored alongside growth metrics to avoid optimizing conversion alone.",
+    "Onboarding, KYC conversion, payment completion, and retention need to be measured as a connected lifecycle.",
+    "Vendor data must be sourced, normalized, and validated before executive KPI summaries are trustworthy.",
+    "Error-rate and compliance metrics belong beside growth metrics so conversion is not optimized in isolation.",
+    "Ad hoc reporting requests are faster when event mappings and technical logic are documented once.",
   ],
   recommendations: [
     "Instrument a consistent event taxonomy across signup, verification, bank linking, and payment states.",
@@ -123,13 +137,13 @@ export const digipaePaymentProductAnalytics = {
     "Treat uncertain sources as pending confirmation.",
   ],
   technicalWork: [
-    "Drafted stage-level funnel definitions for product analytics",
-    "Outlined SQL-friendly event and entity relationships for payments and identity",
-    "Specified dashboard views for success trends, failure reasons, and exceptions",
+    "Instrumented Mixpanel tracking for payment, onboarding, KYC, and retention funnels",
+    "Designed structured data schemas supporting transaction analytics and KPI reporting",
+    "Built validation checks across multi-vendor data reconciliation workflows",
   ],
   disclaimers: [
-    "This case study describes analytical framing and decision support. It does not claim access to unpublished production financial data.",
-    "DigiPae product marketing metrics from the public website are not reused as portfolio results.",
+    "Portfolio evidence stays sanitized. Confidential production payment and identity records are not published.",
+    "DigiPae marketing-site traction or fee figures are not reused as portfolio results.",
   ],
   coverImage: `/projects/${slug}/cover.svg`,
   coverAlt:
@@ -171,7 +185,7 @@ export const digipaePaymentProductAnalytics = {
     {
       type: "External project",
       label: "DigiPae website",
-      href: "https://digipae.com",
+      href: "https://www.digipae.com",
     },
   ],
   codeSample: {
