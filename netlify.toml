@@ -1,0 +1,9 @@
+[build]
+  command = "npm run build"
+
+[build.environment]
+  NODE_VERSION = "20"
+  NEXT_PUBLIC_SITE_URL = "http://localhost:3000"
+
+# Set NEXT_PUBLIC_SITE_URL in the Netlify UI to your *.netlify.app
+# (or custom domain) URL after the first deploy, then redeploy.
