@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
-import { ContactForm } from "@/components/contact/ContactForm";
-import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
-import { CopyEmailButton } from "@/components/ui/CopyEmailButton";
-import { Button } from "@/components/ui/Button";
+import { ContactForm } from "@/components/ContactForm";
 import { siteConfig } from "@/data/site";
 
 export const metadata: Metadata = {
@@ -18,12 +16,17 @@ export default function ContactPage() {
     <div className="section-space pt-10">
       <div className="container-page grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
         <div>
-          <Breadcrumbs
-            items={[
-              { label: "Home", href: "/" },
-              { label: "Contact" },
-            ]}
-          />
+          <nav aria-label="Breadcrumb" className="text-sm text-muted">
+            <ol className="flex flex-wrap gap-2">
+              <li>
+                <Link href="/" className="hover:text-foreground">
+                  Home
+                </Link>
+              </li>
+              <li aria-hidden="true">/</li>
+              <li aria-current="page">Contact</li>
+            </ol>
+          </nav>
           <h1 className="mt-6 text-4xl font-semibold tracking-tight">Contact</h1>
           <p className="mt-4 text-lg text-muted">
             Use the form or email directly. Until the Netlify form is verified in a
@@ -53,19 +56,23 @@ export default function ContactPage() {
               <p className="text-sm font-medium text-foreground">Location</p>
               <p className="mt-1 text-sm text-muted">{siteConfig.location}</p>
             </div>
-            <div className="flex flex-wrap gap-3">
-              <Button href={`mailto:${siteConfig.email}`} variant="secondary">
-                Open email app
-              </Button>
-              <CopyEmailButton email={siteConfig.email} />
-            </div>
             <div className="border-t border-border pt-4 text-sm text-muted">
               <p>
-                <a href={siteConfig.linkedin} target="_blank" rel="noreferrer" className="text-accent hover:underline">
+                <a
+                  href={siteConfig.linkedin}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-accent hover:underline"
+                >
                   LinkedIn
                 </a>
                 {" · "}
-                <a href={siteConfig.github} target="_blank" rel="noreferrer" className="text-accent hover:underline">
+                <a
+                  href={siteConfig.github}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-accent hover:underline"
+                >
                   GitHub
                 </a>
               </p>

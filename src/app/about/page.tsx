@@ -1,17 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
-import { Badge } from "@/components/ui/Badge";
-import { Button } from "@/components/ui/Button";
 import {
   aboutHighlights,
   certifications,
   educationItems,
   experienceItems,
 } from "@/data/experience";
-import { analyticalApproach } from "@/data/skills";
-import { siteConfig } from "@/data/site";
+import { analyticalApproach, siteConfig } from "@/data/site";
 
 export const metadata: Metadata = {
   title: "About",
@@ -20,16 +16,27 @@ export const metadata: Metadata = {
   alternates: { canonical: "/about" },
 };
 
+const btnPrimary =
+  "inline-flex items-center justify-center rounded-xl bg-accent px-5 py-2.5 text-sm font-medium text-[#fff] hover:bg-[#4c3f75]";
+const btnSecondary =
+  "inline-flex items-center justify-center rounded-xl border border-border bg-surface px-5 py-2.5 text-sm font-medium hover:bg-accent-soft";
+
 export default function AboutPage() {
   return (
     <div className="section-space pt-10">
       <div className="container-page max-w-4xl">
-        <Breadcrumbs
-          items={[
-            { label: "Home", href: "/" },
-            { label: "About" },
-          ]}
-        />
+        <nav aria-label="Breadcrumb" className="text-sm text-muted">
+          <ol className="flex flex-wrap gap-2">
+            <li>
+              <Link href="/" className="hover:text-foreground">
+                Home
+              </Link>
+            </li>
+            <li aria-hidden="true">/</li>
+            <li aria-current="page">About</li>
+          </ol>
+        </nav>
+
         <header className="mt-6">
           <h1 className="text-4xl font-semibold tracking-tight">About</h1>
           <p className="mt-4 text-lg text-muted">{siteConfig.description}</p>
@@ -45,7 +52,10 @@ export default function AboutPage() {
           </p>
           <ul className="space-y-3">
             {aboutHighlights.map((item) => (
-              <li key={item} className="rounded-xl border border-border bg-surface px-4 py-3 text-sm text-muted">
+              <li
+                key={item}
+                className="rounded-xl border border-border bg-surface px-4 py-3 text-sm text-muted"
+              >
                 {item}
               </li>
             ))}
@@ -74,16 +84,22 @@ export default function AboutPage() {
             experience supports analyst positioning; it does not replace project evidence
             and does not include unverified traction claims.
           </p>
-          <p className="text-sm text-muted">
-            Based in {siteConfig.location}.
-          </p>
+          <p className="text-sm text-muted">Based in {siteConfig.location}.</p>
           <div className="flex flex-wrap gap-3">
-            <Button href={`/projects/${siteConfig.digipaeCaseStudySlug}`}>
+            <Link
+              href={`/projects/${siteConfig.digipaeCaseStudySlug}`}
+              className={btnPrimary}
+            >
               DigiPae case study
-            </Button>
-            <Button href={siteConfig.digipae} variant="secondary">
+            </Link>
+            <a
+              href={siteConfig.digipae}
+              target="_blank"
+              rel="noreferrer"
+              className={btnSecondary}
+            >
               DigiPae website
-            </Button>
+            </a>
           </div>
         </section>
 
@@ -91,10 +107,7 @@ export default function AboutPage() {
           <h2 className="text-2xl font-semibold">Experience</h2>
           {experienceItems.map((item) => (
             <article key={item.title} className="rounded-2xl border border-border p-5">
-              <div className="flex flex-wrap gap-2">
-                <h3 className="font-semibold">{item.title}</h3>
-                {item.pendingDetails ? <Badge tone="warning">Details pending</Badge> : null}
-              </div>
+              <h3 className="font-semibold">{item.title}</h3>
               <p className="mt-1 text-sm text-muted">
                 {item.organization} · {item.period}
               </p>
@@ -137,10 +150,12 @@ export default function AboutPage() {
             are hiring for.
           </p>
           <div className="mt-4 flex flex-wrap gap-3">
-            <Button href="/projects">View projects</Button>
-            <Button href="/contact" variant="secondary">
+            <Link href="/projects" className={btnPrimary}>
+              View projects
+            </Link>
+            <Link href="/contact" className={btnSecondary}>
               Contact
-            </Button>
+            </Link>
             <Link href="/resume" className="text-sm font-medium text-accent hover:underline">
               Resume page
             </Link>

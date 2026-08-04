@@ -34,6 +34,10 @@ test.describe("portfolio smoke tests", () => {
       }),
     ).toBeVisible();
     await expect(page.getByRole("heading", { name: "Overview" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Business problem" })).toBeVisible();
+    await expect(
+      page.getByRole("heading", { name: "Analysis and approach" }),
+    ).toBeVisible();
   });
 
   test("unknown project slug returns 404", async ({ page }) => {
@@ -67,15 +71,6 @@ test.describe("portfolio smoke tests", () => {
     await expect(page.getByRole("dialog", { name: "Mobile navigation" })).toBeVisible();
     await page.getByRole("button", { name: "Close menu", exact: true }).click();
     await expect(page.getByRole("dialog", { name: "Mobile navigation" })).toHaveCount(0);
-  });
-
-  test("gallery dialog opens and closes with keyboard", async ({ page }) => {
-    await page.goto("/projects/digipae-payment-product-analytics");
-    await page.getByRole("button", { name: "Open full screen" }).first().click();
-    const dialog = page.getByRole("dialog");
-    await expect(dialog).toBeVisible();
-    await page.keyboard.press("Escape");
-    await expect(dialog).toHaveCount(0);
   });
 
   test("homepage has no serious accessibility violations", async ({ page }) => {

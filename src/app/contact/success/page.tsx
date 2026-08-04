@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
-import { Button } from "@/components/ui/Button";
 import { siteConfig } from "@/data/site";
 
 export const metadata: Metadata = {
@@ -27,10 +27,18 @@ export default function ContactSuccessPage() {
             directly.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Button href="/">Back to home</Button>
-            <Button href="/projects" variant="secondary">
+            <Link
+              href="/"
+              className="inline-flex rounded-xl bg-accent px-5 py-2.5 text-sm font-medium text-[#fff]"
+            >
+              Back to home
+            </Link>
+            <Link
+              href="/projects"
+              className="inline-flex rounded-xl border border-border px-5 py-2.5 text-sm font-medium hover:bg-accent-soft"
+            >
               View projects
-            </Button>
+            </Link>
           </div>
         </div>
       </div>

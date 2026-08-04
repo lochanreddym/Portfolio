@@ -1,17 +1,15 @@
 # Lochanreddy Mallakunta · Analytics Portfolio
 
-Recruiter-friendly analytics portfolio for Data Analyst, BI/Reporting, Business, Operations, Marketing, Product, RevOps, and Financial Data Analyst roles.
+Recruiter-friendly analytics portfolio for Data Analyst, BI/Reporting, Business, Operations, Marketing, Product, RevOps, and related roles.
 
 **Primary headline:** Turning data into decisions across BI, business, operations, marketing, and product.
 
 ## Stack
 
-- Next.js App Router
-- TypeScript (strict)
+- Next.js App Router + TypeScript
 - Tailwind CSS
-- Zod-validated project content
 - Playwright + axe smoke tests
-- Netlify deployment target
+- Netlify deployment
 
 ## Quick start
 
@@ -27,9 +25,9 @@ Open [http://localhost:3000](http://localhost:3000).
 
 | Variable | Purpose | Local fallback |
 |----------|---------|----------------|
-| `NEXT_PUBLIC_SITE_URL` | Canonical URLs, sitemap, Open Graph, JSON-LD | `http://localhost:3000` |
+| `NEXT_PUBLIC_SITE_URL` | Canonical URLs, sitemap, Open Graph | `http://localhost:3000` |
 
-After the first Netlify deploy, set this to `https://<site>.netlify.app` and redeploy. If you later add a custom domain, update the same variable.
+After the first Netlify deploy, set this to `https://<site>.netlify.app` and redeploy. Update again if you add a custom domain.
 
 ## Scripts
 
@@ -44,28 +42,46 @@ npm run test:e2e     # Playwright smoke + accessibility tests
 
 ## Content
 
-- Site identity: `src/data/site.ts`
-- Skills / approach: `src/data/skills.ts`
-- Experience placeholders: `src/data/experience.ts`
-- Projects: `src/content/projects/`
-- Authoring guide: `docs/content-authoring-guide.md`
-- Evidence checklist: `docs/project-evidence-checklist.md`
-- Content inventory: `docs/content-inventory.md`
+| File | Purpose |
+|------|---------|
+| `src/data/site.ts` | Identity, skills, role map, analytical approach |
+| `src/data/experience.ts` | Experience, education, certifications |
+| `src/data/projects.ts` | All project case studies |
+| `src/types/project.ts` | Project TypeScript model |
 
-## Missing assets (add before recruiter outreach)
+## Assets
 
-1. `public/resume/Lochanreddy-Mallakunta-Resume.pdf`
-2. `public/images/lochanreddy-headshot.webp`
-3. Real project evidence images under `public/projects/<slug>/`
-4. Verified metrics, dates, dataset sources, and cleared external links
+| Path | Status |
+|------|--------|
+| `public/resume/Lochanreddy-Mallakunta-Resume.pdf` | Present |
+| `public/images/lochanreddy-headshot.webp` | Optional — initials placeholder until added |
+| `public/images/project-placeholder.svg` | Shared fallback for project evidence |
+| Real evidence under `public/images/projects/` | Add when cleared for public use |
 
-Until those exist, the site uses clearly labeled placeholders and disables resume download automatically.
+## Netlify deployment
 
-## Netlify
+1. Connect the GitHub repo in Netlify (`Add new site → Import an existing project`).
+2. Build command: `npm run build`. Leave the Next.js runtime publish settings alone (do not force `out`).
+3. Node version: `20` (`.nvmrc` is included).
+4. Set `NEXT_PUBLIC_SITE_URL` to the Netlify URL, then redeploy.
+5. Contact form uses Netlify Forms (`data-netlify="true"`, honeypot, POST to `/contact/success`). Do **not** claim it works until tested in a deployed preview.
+6. Verify homepage, project filters, a case study, 404, resume download, contact markup, sitemap, and robots after deploy.
 
-See [`docs/netlify-deployment.md`](docs/netlify-deployment.md).
+Config lives in `netlify.toml`.
 
-Important: the contact form is Netlify-compatible, but do **not** claim it works until tested in a deployed Netlify preview.
+## Structure
+
+```
+src/
+  app/           # routes
+  components/    # Header, Footer, HomeSections, Project*, ContactForm
+  data/          # site, projects, experience
+  types/         # Project interface
+public/
+  resume/        # PDF
+  images/        # headshot + shared project placeholder
+  social/        # Open Graph image
+```
 
 ## Quality gates
 
@@ -82,4 +98,4 @@ npm run test:e2e
 - Email: lochanreddy.m64@gmail.com
 - GitHub: https://github.com/lochanreddym
 - LinkedIn: https://www.linkedin.com/in/lochanreddy64m/
-- DigiPae: https://digipae.com
+- DigiPae: https://www.digipae.com
