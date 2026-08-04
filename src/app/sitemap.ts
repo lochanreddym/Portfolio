@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-import { getAllProjectSlugs } from "@/content/projects";
+import { getAllSlugs } from "@/data/projects";
 import { siteConfig } from "@/data/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -12,7 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }),
   );
 
-  const projectRoutes = getAllProjectSlugs().map((slug) => ({
+  const projectRoutes = getAllSlugs().map((slug) => ({
     url: `${base}/projects/${slug}`,
     lastModified: new Date(),
   }));

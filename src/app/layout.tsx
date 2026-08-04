@@ -1,41 +1,38 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Fraunces, Source_Sans_3 } from "next/font/google";
 
-import { Footer } from "@/components/layout/Footer";
-import { Header } from "@/components/layout/Header";
-import { JsonLd } from "@/components/layout/JsonLd";
-import { SkipLink } from "@/components/layout/SkipLink";
-import { siteConfig } from "@/data/site";
+import { Footer } from "@/components/Footer";
+import { Header } from "@/components/Header";
+import { getSiteUrl, siteConfig } from "@/data/site";
 
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const display = Fraunces({
   subsets: ["latin"],
+  variable: "--font-fraunces",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const sans = Source_Sans_3({
   subsets: ["latin"],
+  variable: "--font-body",
 });
+
+const siteUrl = getSiteUrl();
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteConfig.siteUrl),
+  metadataBase: new URL(siteUrl),
   title: {
-    default: `${siteConfig.name} · Analytics Portfolio`,
-    template: `%s · ${siteConfig.name}`,
+    default: `${siteConfig.name} | Analytics Portfolio`,
+    template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
-  alternates: {
-    canonical: "/",
-  },
   openGraph: {
+    title: `${siteConfig.name} | Analytics Portfolio`,
+    description: siteConfig.description,
+    url: siteUrl,
+    siteName: `${siteConfig.name} Portfolio`,
+    locale: "en_US",
     type: "website",
-    locale: siteConfig.locale,
-    url: siteConfig.siteUrl,
-    siteName: `${siteConfig.name} · Analytics Portfolio`,
-    title: `${siteConfig.name} · Analytics Portfolio`,
-    description: siteConfig.headline,
     images: [
       {
         url: siteConfig.socialImage,
@@ -47,35 +44,25 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${siteConfig.name} · Analytics Portfolio`,
-    description: siteConfig.headline,
+    title: `${siteConfig.name} | Analytics Portfolio`,
+    description: siteConfig.description,
     images: [siteConfig.socialImage],
   },
-  robots: {
-    index: true,
-    follow: true,
-  },
-  icons: {
-    icon: [{ url: "/favicon.ico" }, { url: "/favicon-32.png", sizes: "32x32" }],
-    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
-  },
+  robots: { index: true, follow: true },
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full`}>
-      <body className="flex min-h-full flex-col antialiased">
-        <SkipLink />
+    <html lang="en">
+      <body className={`${display.variable} ${sans.variable} min-h-screen antialiased`}>
+        <a href="#main-content" className="skip-link">
+          Skip to main content
+        </a>
         <Header />
-        <main id="main-content" className="flex-1">
-          {children}
-        </main>
+        <main id="main-content">{children}</main>
         <Footer />
-        <JsonLd />
       </body>
     </html>
   );

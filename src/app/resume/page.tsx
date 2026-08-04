@@ -1,15 +1,11 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
-import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
-import { ResumeDownload } from "@/components/ui/ResumeDownload";
-import { Button } from "@/components/ui/Button";
-import { siteConfig } from "@/data/site";
-import { skillGroups } from "@/data/skills";
+import { siteConfig, skillGroups } from "@/data/site";
 
 export const metadata: Metadata = {
   title: "Resume",
-  description:
-    "Resume overview and download options for Lochanreddy Mallakunta.",
+  description: "Resume overview and download options for Lochanreddy Mallakunta.",
   alternates: { canonical: "/resume" },
 };
 
@@ -19,12 +15,18 @@ export default function ResumePage() {
   return (
     <div className="section-space pt-10">
       <div className="container-page max-w-3xl">
-        <Breadcrumbs
-          items={[
-            { label: "Home", href: "/" },
-            { label: "Resume" },
-          ]}
-        />
+        <nav aria-label="Breadcrumb" className="text-sm text-muted">
+          <ol className="flex flex-wrap gap-2">
+            <li>
+              <Link href="/" className="hover:text-foreground">
+                Home
+              </Link>
+            </li>
+            <li aria-hidden="true">/</li>
+            <li aria-current="page">Resume</li>
+          </ol>
+        </nav>
+
         <header className="mt-6">
           <h1 className="text-4xl font-semibold tracking-tight">Resume</h1>
           <p className="mt-4 text-lg text-muted">
@@ -42,32 +44,33 @@ export default function ResumePage() {
                 File path: public/{siteConfig.resume.relativePath}
               </p>
               <div className="mt-5">
-                <ResumeDownload />
+                <a
+                  href={siteConfig.resume.href}
+                  download={siteConfig.resume.fileName}
+                  className="inline-flex rounded-xl bg-accent px-5 py-2.5 text-sm font-medium text-[#fff]"
+                >
+                  Download Resume
+                </a>
               </div>
             </>
           ) : (
             <>
               <p className="font-medium text-foreground">Resume PDF not uploaded yet</p>
-              <p className="mt-2 text-sm text-muted">
-                Add an ATS-friendly PDF at:
-              </p>
+              <p className="mt-2 text-sm text-muted">Add an ATS-friendly PDF at:</p>
               <code className="mt-3 block rounded-xl bg-background px-4 py-3 text-sm">
                 public/{siteConfig.resume.relativePath}
               </code>
               <p className="mt-3 text-sm text-muted">
-                The site configuration detects the file at build/runtime and enables the
-                download button automatically. No fake PDF is generated.
+                The site detects the file at build/runtime and enables the download
+                automatically. No fake PDF is generated.
               </p>
-              {process.env.NODE_ENV === "development" ? (
-                <p className="mt-4 rounded-xl bg-warning-soft px-4 py-3 text-sm text-[#8a5a12]">
-                  Development warning: resume download is currently disabled because the
-                  PDF is missing.
-                </p>
-              ) : null}
               <div className="mt-5">
-                <Button href={`mailto:${siteConfig.email}`} variant="secondary">
+                <a
+                  href={`mailto:${siteConfig.email}`}
+                  className="inline-flex rounded-xl border border-border px-5 py-2.5 text-sm font-medium hover:bg-accent-soft"
+                >
                   Request resume by email
-                </Button>
+                </a>
               </div>
             </>
           )}

@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/Button";
+import Link from "next/link";
 
 export default function NotFound() {
   return (
@@ -9,10 +9,18 @@ export default function NotFound() {
           That route does not exist. Try the project library or return home.
         </p>
         <div className="mt-8 flex flex-wrap gap-3">
-          <Button href="/">Home</Button>
-          <Button href="/projects" variant="secondary">
+          <Link
+            href="/"
+            className="inline-flex rounded-xl bg-accent px-5 py-2.5 text-sm font-medium text-[#fff]"
+          >
+            Home
+          </Link>
+          <Link
+            href="/projects"
+            className="inline-flex rounded-xl border border-border px-5 py-2.5 text-sm font-medium hover:bg-accent-soft"
+          >
             Projects
-          </Button>
+          </Link>
         </div>
       </div>
     </div>

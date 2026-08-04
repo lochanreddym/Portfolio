@@ -1,12 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { ProjectCaseStudy } from "@/components/projects/ProjectCaseStudy";
-import {
-  getAdjacentProjects,
-  getAllProjectSlugs,
-  getProjectBySlug,
-} from "@/content/projects";
+import { ProjectDetail } from "@/components/ProjectDetail";
+import { getAllSlugs, getProjectBySlug } from "@/data/projects";
 import { siteConfig } from "@/data/site";
 
 type ProjectPageProps = {
@@ -14,7 +10,7 @@ type ProjectPageProps = {
 };
 
 export function generateStaticParams() {
-  return getAllProjectSlugs().map((slug) => ({ slug }));
+  return getAllSlugs().map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({
@@ -26,20 +22,19 @@ export async function generateMetadata({
     return { title: "Project not found" };
   }
 
+  const cover = project.visuals[0];
+
   return {
     title: project.title,
-    description: project.oneLineOutcome,
+    description: project.outcome,
     alternates: { canonical: `/projects/${project.slug}` },
     openGraph: {
       title: project.title,
-      description: project.oneLineOutcome,
+      description: project.outcome,
       url: `${siteConfig.siteUrl}/projects/${project.slug}`,
-      images: [
-        {
-          url: project.coverImage,
-          alt: project.coverAlt,
-        },
-      ],
+      images: cover
+        ? [{ url: cover.src, alt: cover.alt }]
+        : [{ url: siteConfig.socialImage, alt: project.title }],
     },
   };
 }
@@ -48,8 +43,5 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   const { slug } = await params;
   const project = getProjectBySlug(slug);
   if (!project) notFound();
-
-  const { previous, next } = getAdjacentProjects(slug);
-
-  return <ProjectCaseStudy project={project} previous={previous} next={next} />;
+  return <ProjectDetail project={project} />;
 }

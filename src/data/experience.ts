@@ -4,7 +4,6 @@ export type TimelineItem = {
   period: string;
   description: string;
   tags: string[];
-  pendingDetails?: boolean;
 };
 
 export const experienceItems: TimelineItem[] = [
@@ -14,12 +13,7 @@ export const experienceItems: TimelineItem[] = [
     period: "Oct 2025 – Present · St. Louis, MO",
     description:
       "Building DigiPae, a payments and verified-identity platform. Instrumented product analytics with Mixpanel for payment funnels, onboarding drop-off, KYC conversion, and retention; designed KPI dashboards for transaction volumes, error rates, and compliance metrics; reconciled multi-vendor data flows (Stripe, Socure, Plaid, Firebase) into consistent reporting views.",
-    tags: [
-      "Product analytics",
-      "KPI dashboards",
-      "Funnel analysis",
-      "Data validation",
-    ],
+    tags: ["Product analytics", "KPI dashboards", "Funnel analysis"],
   },
   {
     title: "Data & BI Lead",
@@ -35,7 +29,7 @@ export const experienceItems: TimelineItem[] = [
     period: "May – Oct 2024 · St. Louis, MO",
     description:
       "Wrote complex SQL against SQL Server for membership, program, and financial reporting. Built Power BI dashboards and Excel reports with validation checks. Automated recurring extraction and reporting with Python (Pandas), reducing manual reporting effort by approximately 35% per resume.",
-    tags: ["SQL Server", "Power BI", "Excel", "Python automation"],
+    tags: ["SQL Server", "Power BI", "Excel", "Python"],
   },
   {
     title: "Cloud Developer",
@@ -54,7 +48,7 @@ export const educationItems: TimelineItem[] = [
     period: "St. Louis, MO",
     description:
       "Graduate study in Information Systems, including master’s research work on smart-city analytics.",
-    tags: ["Information Systems", "Research"],
+    tags: ["Information Systems"],
   },
   {
     title: "Bachelor of Technology — Computer Science & Engineering",

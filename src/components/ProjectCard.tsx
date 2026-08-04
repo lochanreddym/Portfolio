@@ -1,32 +1,33 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { Badge } from "@/components/ui/Badge";
-import type { ProjectCardData } from "@/types/project";
+import type { Project } from "@/types/project";
 
-export function ProjectCard({ project }: { project: ProjectCardData }) {
+export function ProjectCard({ project }: { project: Project }) {
+  const cover = project.visuals[0];
+
   return (
     <article className="surface-card flex h-full flex-col overflow-hidden">
       <div className="relative aspect-[16/10] bg-accent-soft">
         <Image
-          src={project.coverImage}
-          alt={project.coverAlt}
+          src={cover?.src ?? "/images/project-placeholder.svg"}
+          alt={cover?.alt ?? `${project.title} cover`}
           fill
           className="object-cover"
           sizes="(max-width: 768px) 100vw, 33vw"
         />
       </div>
       <div className="flex flex-1 flex-col p-5">
-        <div className="flex flex-wrap gap-2">
-          <Badge tone="accent">{project.status}</Badge>
-          <Badge>{project.domain}</Badge>
-          <Badge tone="warning">{project.dataClassification}</Badge>
+        <div className="flex flex-wrap gap-2 text-xs">
+          <span className="rounded-lg bg-accent-soft px-2.5 py-1 font-medium text-accent">
+            {project.featured ? "Featured" : project.projectType}
+          </span>
+          <span className="rounded-lg bg-[#f1eef4] px-2.5 py-1 font-medium text-muted">
+            {project.domain}
+          </span>
         </div>
         <h3 className="mt-4 text-xl font-semibold tracking-tight">
-          <Link
-            href={`/projects/${project.slug}`}
-            className="hover:text-accent"
-          >
+          <Link href={`/projects/${project.slug}`} className="hover:text-accent">
             {project.title}
           </Link>
         </h3>
@@ -36,19 +37,9 @@ export function ProjectCard({ project }: { project: ProjectCardData }) {
         </p>
         <p className="mt-2 text-sm text-muted">
           <span className="font-medium text-foreground">Outcome: </span>
-          {project.oneLineOutcome}
+          {project.outcome}
         </p>
-        <div className="mt-4 flex flex-wrap gap-2">
-          {project.roleCategories.slice(0, 4).map((role) => (
-            <Badge key={role}>{role}</Badge>
-          ))}
-        </div>
-        <p className="mt-4 text-xs text-muted">
-          Tools: {project.tools.join(" · ")}
-        </p>
-        <p className="mt-1 text-xs text-muted">
-          Evidence: {project.evidenceTypes.join(" · ")}
-        </p>
+        <p className="mt-4 text-xs text-muted">Tools: {project.tools.join(" · ")}</p>
         <div className="mt-auto pt-5">
           <Link
             href={`/projects/${project.slug}`}
