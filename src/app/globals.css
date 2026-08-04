@@ -1,0 +1,133 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f7f5f9;
+  --surface: #ffffff;
+  --foreground: #1b2430;
+  --muted: #5b6573;
+  --border: #e4e0ea;
+  --accent: #5b4b8a;
+  --accent-soft: #efeaf8;
+  --teal: #2f6f6a;
+  --teal-soft: #e7f2f1;
+  --warning-soft: #fff6e8;
+  --shadow: 0 10px 30px rgba(27, 36, 48, 0.06);
+  --radius: 1rem;
+  --content-max: 1200px;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-teal: var(--teal);
+  --color-teal-soft: var(--teal-soft);
+  --color-warning-soft: var(--warning-soft);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --shadow-soft: var(--shadow);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  background:
+    radial-gradient(circle at top left, rgba(91, 75, 138, 0.06), transparent 28%),
+    radial-gradient(circle at top right, rgba(47, 111, 106, 0.05), transparent 24%),
+    var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  line-height: 1.6;
+  min-height: 100%;
+}
+
+a {
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+:focus-visible {
+  outline: 3px solid color-mix(in oklab, var(--accent) 80%, white);
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -100%;
+  z-index: 100;
+  border-radius: 999px;
+  background: var(--foreground);
+  color: white;
+  padding: 0.75rem 1rem;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+.container-page {
+  margin-inline: auto;
+  width: min(100% - 2rem, var(--content-max));
+}
+
+.section-space {
+  padding-block: 4.5rem;
+}
+
+.surface-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.prose-portfolio p {
+  color: var(--muted);
+}
+
+.prose-portfolio p + p {
+  margin-top: 1rem;
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+  }
+
+  .surface-card {
+    box-shadow: none;
+  }
+
+  a[href]::after {
+    content: none !important;
+  }
+}
