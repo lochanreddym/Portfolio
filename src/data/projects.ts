@@ -1,6 +1,6 @@
 import type { Project } from "@/types/project";
 
-const placeholder = "/images/project-placeholder.svg";
+const placeholder = "/images/project-chart-placeholder.svg";
 
 export const projects: Project[] = [
   {

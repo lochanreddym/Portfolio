@@ -10,7 +10,7 @@ export function ProjectCard({ project }: { project: Project }) {
     <article className="project-card lift-hover group flex h-full flex-col overflow-hidden border border-border bg-surface">
       <div className="project-card-media relative aspect-[16/10] overflow-hidden bg-accent-soft">
         <Image
-          src={cover?.src ?? "/images/project-placeholder.svg"}
+          src={cover?.src ?? "/images/project-chart-placeholder.svg"}
           alt={cover?.alt ?? `${project.title} cover`}
           fill
           className="object-cover"

@@ -55,7 +55,7 @@ npm run test:e2e     # Playwright smoke + accessibility tests
 |------|--------|
 | `public/resume/Lochanreddy-Mallakunta-Resume.pdf` | Present |
 | `public/images/lochanreddy-headshot.webp` | Optional — initials placeholder until added |
-| `public/images/project-placeholder.svg` | Shared fallback for project evidence |
+| `public/images/project-chart-placeholder.svg` | Shared fallback chart graphic for project covers |
 | Real evidence under `public/images/projects/` | Add when cleared for public use |
 
 ## Netlify deployment
