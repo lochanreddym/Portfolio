@@ -54,7 +54,7 @@ npm run test:e2e     # Playwright smoke + accessibility tests
 | Path | Status |
 |------|--------|
 | `public/resume/Lochanreddy-Mallakunta-Resume.pdf` | Present |
-| `public/images/lochanreddy-headshot.webp` | Optional — initials placeholder until added |
+| `public/images/lochanreddy-headshot.webp` | Present — used in homepage hero |
 | `public/images/project-chart-placeholder.svg` | Shared fallback chart graphic for project covers |
 | Real evidence under `public/images/projects/` | Add when cleared for public use |
 

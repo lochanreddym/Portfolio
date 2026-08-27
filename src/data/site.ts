@@ -46,7 +46,7 @@ export const siteConfig = {
     href: "/images/lochanreddy-headshot.webp",
     alt: "Portrait of Lochanreddy Mallakunta",
     /** Flip to true after adding public/images/lochanreddy-headshot.webp. */
-    available: false,
+    available: true,
   },
 } as const;
 
