@@ -25,7 +25,7 @@ Open [http://localhost:3000](http://localhost:3000).
 
 | Variable | Purpose | Local fallback |
 |----------|---------|----------------|
-| `NEXT_PUBLIC_SITE_URL` | Canonical URLs, sitemap, Open Graph | `http://localhost:3000` |
+| `NEXT_PUBLIC_SITE_URL` | Canonical URLs, sitemap, Open Graph | `http://localhost:3000` (production: `https://lochanreddy.site`) |
 
 After the first Netlify deploy, set this to `https://<site>.netlify.app` and redeploy. Update again if you add a custom domain.
 
@@ -63,7 +63,7 @@ npm run test:e2e     # Playwright smoke + accessibility tests
 1. Connect the GitHub repo in Netlify (`Add new site → Import an existing project`).
 2. Build command: `npm run build`. Leave the Next.js runtime publish settings alone (do not force `out`).
 3. Node version: `20` (`.nvmrc` is included).
-4. Set `NEXT_PUBLIC_SITE_URL` to the Netlify URL, then redeploy.
+4. Production `NEXT_PUBLIC_SITE_URL` is set to `https://lochanreddy.site` in `netlify.toml`. Override in the Netlify UI only for preview deploys if needed.
 5. Contact form uses Netlify Forms (`data-netlify="true"`, honeypot, POST to `/contact/success`). Do **not** claim it works until tested in a deployed preview.
 6. Verify homepage, project filters, a case study, 404, resume download, contact markup, sitemap, and robots after deploy.
 

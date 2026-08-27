@@ -3,7 +3,7 @@
 
 [build.environment]
   NODE_VERSION = "20"
-  NEXT_PUBLIC_SITE_URL = "http://localhost:3000"
+  NEXT_PUBLIC_SITE_URL = "https://lochanreddy.site"
 
-# Set NEXT_PUBLIC_SITE_URL in the Netlify UI to your *.netlify.app
-# (or custom domain) URL after the first deploy, then redeploy.
+# Production canonical URL is https://lochanreddy.site.
+# Override NEXT_PUBLIC_SITE_URL in the Netlify UI only for preview deploys.
