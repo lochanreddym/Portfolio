@@ -9,10 +9,18 @@ import { siteConfig } from "@/data/site";
 export function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const panelId = useId();
   const closeRef = useRef<HTMLButtonElement>(null);
   const openRef = useRef<HTMLButtonElement>(null);
   const resumeAvailable = siteConfig.resume.available;
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 12);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     if (!open) return;
@@ -33,30 +41,46 @@ export function Header() {
   }, [open]);
 
   return (
-    <header className="no-print sticky top-0 z-40 border-b border-border/80 bg-[rgba(247,245,249,0.88)] backdrop-blur">
+    <header
+      className={`no-print sticky top-0 z-40 border-b transition-[background-color,border-color,backdrop-filter] duration-300 ${
+        scrolled
+          ? "border-border/90 bg-[rgba(244,241,247,0.92)] backdrop-blur-md"
+          : "border-transparent bg-[rgba(244,241,247,0.55)] backdrop-blur-sm"
+      }`}
+    >
       <div className="container-page flex items-center justify-between gap-4 py-4">
         <Link href="/" className="min-w-0">
-          <span className="block truncate text-base font-semibold tracking-tight">
+          <span className="font-display block truncate text-base font-semibold tracking-tight">
             {siteConfig.name}
           </span>
           <span className="block text-xs text-muted">Analytics portfolio</span>
         </Link>
 
         <nav className="hidden items-center gap-1 md:flex" aria-label="Primary">
-          {siteConfig.nav.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="rounded-xl px-3 py-2 text-sm font-medium text-muted transition-colors hover:bg-accent-soft hover:text-foreground"
-            >
-              {item.label}
-            </Link>
-          ))}
+          {siteConfig.nav.map((item) => {
+            const active =
+              item.href === "/"
+                ? pathname === "/"
+                : pathname === item.href || pathname.startsWith(`${item.href}/`);
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`rounded-xl px-3 py-2 text-sm font-medium transition-colors duration-200 ${
+                  active
+                    ? "bg-accent-soft text-accent"
+                    : "text-muted hover:bg-accent-soft hover:text-foreground"
+                }`}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
         </nav>
 
         <Link
           href={resumeAvailable ? siteConfig.resume.href : "/resume"}
-          className="hidden rounded-xl bg-accent px-3.5 py-2 text-sm font-medium text-[#fff] md:inline-flex"
+          className="hidden rounded-xl bg-accent px-3.5 py-2 text-sm font-medium text-[#fff] transition-[transform,background-color] duration-300 hover:-translate-y-0.5 hover:bg-[#453869] md:inline-flex"
           {...(resumeAvailable ? { download: siteConfig.resume.fileName } : {})}
         >
           Resume
@@ -79,7 +103,7 @@ export function Header() {
             <div className="fixed inset-0 z-50">
               <button
                 type="button"
-                className="absolute inset-0 bg-[rgba(27,36,48,0.45)]"
+                className="mobile-backdrop absolute inset-0 bg-[rgba(27,36,48,0.45)]"
                 aria-label="Dismiss menu"
                 onClick={() => {
                   setOpen(false);
@@ -91,7 +115,7 @@ export function Header() {
                 role="dialog"
                 aria-modal="true"
                 aria-label="Mobile navigation"
-                className="absolute inset-y-0 right-0 flex w-[min(100%,22rem)] flex-col bg-surface shadow-soft"
+                className="mobile-panel absolute inset-y-0 right-0 flex w-[min(100%,22rem)] flex-col bg-surface shadow-soft"
               >
                 <div className="flex items-center justify-between border-b border-border px-5 py-4">
                   <p className="font-semibold">Menu</p>
@@ -112,7 +136,7 @@ export function Header() {
                     <Link
                       key={item.href}
                       href={item.href}
-                      className={`rounded-xl px-4 py-3 text-base font-medium ${
+                      className={`rounded-xl px-4 py-3 text-base font-medium transition-colors ${
                         pathname === item.href
                           ? "bg-accent-soft text-accent"
                           : "text-foreground"
