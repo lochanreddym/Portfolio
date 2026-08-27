@@ -97,6 +97,12 @@ a {
 
 .section-space {
   padding-block: clamp(4rem, 8vw, 6.5rem);
+  scroll-margin-top: 5.5rem;
+}
+
+h1[id],
+h2[id] {
+  scroll-margin-top: 5.5rem;
 }
 
 .surface-card {
